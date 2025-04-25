@@ -56,12 +56,14 @@ const Navbar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
             
-            <Button variant="ghost" size="icon" className="hover:text-primary relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                3
-              </span>
-            </Button>
+            <Link to="/cart">
+              <Button variant="ghost" size="icon" className="hover:text-primary relative">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  3
+                </span>
+              </Button>
+            </Link>
             
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(true)}>
               <Menu className="h-5 w-5" />
@@ -86,6 +88,8 @@ const Navbar = () => {
             <Link to="/contacts" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Контакты</Link>
             <Link to="/login" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Войти</Link>
             <Link to="/register" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Регистрация</Link>
+            <Link to="/profile" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Мой профиль</Link>
+            <Link to="/cart" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Корзина</Link>
           </div>
         </div>
       )}
