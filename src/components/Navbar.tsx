@@ -1,7 +1,14 @@
-import { ShoppingCart, Menu, Search, X } from "lucide-react";
+import { ShoppingCart, Menu, Search, X, User } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,12 +35,34 @@ const Navbar = () => {
             <Button variant="ghost" size="icon" className="hover:text-primary">
               <Search className="h-5 w-5" />
             </Button>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="hover:text-primary">
+                  <User className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link to="/login" className="w-full cursor-pointer">Войти</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/register" className="w-full cursor-pointer">Регистрация</Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/profile" className="w-full cursor-pointer">Мой профиль</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <Button variant="ghost" size="icon" className="hover:text-primary relative">
               <ShoppingCart className="h-5 w-5" />
               <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 3
               </span>
             </Button>
+            
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(true)}>
               <Menu className="h-5 w-5" />
             </Button>
@@ -55,6 +84,8 @@ const Navbar = () => {
             <Link to="/catalog" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Каталог</Link>
             <Link to="/about" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>О нас</Link>
             <Link to="/contacts" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Контакты</Link>
+            <Link to="/login" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Войти</Link>
+            <Link to="/register" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Регистрация</Link>
           </div>
         </div>
       )}
