@@ -1,6 +1,7 @@
 import { ShoppingCart, Menu, Search, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,16 +12,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="text-primary font-bold text-2xl">СладКо</span>
+            <Link to="/" className="text-primary font-bold text-2xl">СладКо</Link>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-8">
-            <a href="#" className="font-medium hover:text-primary transition-colors">Главная</a>
-            <a href="#" className="font-medium hover:text-primary transition-colors">Торты</a>
-            <a href="#" className="font-medium hover:text-primary transition-colors">Эклеры</a>
-            <a href="#" className="font-medium hover:text-primary transition-colors">Макаруны</a>
-            <a href="#" className="font-medium hover:text-primary transition-colors">О нас</a>
+            <Link to="/" className="font-medium hover:text-primary transition-colors">Главная</Link>
+            <Link to="/catalog" className="font-medium hover:text-primary transition-colors">Каталог</Link>
+            <Link to="/about" className="font-medium hover:text-primary transition-colors">О нас</Link>
+            <Link to="/contacts" className="font-medium hover:text-primary transition-colors">Контакты</Link>
           </div>
 
           {/* Icons */}
@@ -45,17 +45,16 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 bg-background z-50 p-4">
           <div className="flex justify-between items-center mb-8">
-            <span className="text-primary font-bold text-2xl">СладКо</span>
+            <Link to="/" className="text-primary font-bold text-2xl">СладКо</Link>
             <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
               <X className="h-6 w-6" />
             </Button>
           </div>
           <div className="flex flex-col space-y-4">
-            <a href="#" className="py-2 font-medium border-b border-border">Главная</a>
-            <a href="#" className="py-2 font-medium border-b border-border">Торты</a>
-            <a href="#" className="py-2 font-medium border-b border-border">Эклеры</a>
-            <a href="#" className="py-2 font-medium border-b border-border">Макаруны</a>
-            <a href="#" className="py-2 font-medium border-b border-border">О нас</a>
+            <Link to="/" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Главная</Link>
+            <Link to="/catalog" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Каталог</Link>
+            <Link to="/about" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>О нас</Link>
+            <Link to="/contacts" className="py-2 font-medium border-b border-border" onClick={() => setIsMenuOpen(false)}>Контакты</Link>
           </div>
         </div>
       )}
